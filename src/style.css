@@ -1,0 +1,263 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.header p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.player-section {
+  padding: 20px;
+  background-color: #34495e;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+.transcript-section {
+  padding: 30px;
+  font-size: 18px;
+  line-height: 2;
+  border-radius: 0 0 10px 10px;
+}
+
+.word {
+  display: inline;
+  cursor: pointer;
+  padding: 3px 4px;
+  transition: background-color 0.2s ease;
+  border-radius: 3px;
+}
+
+.word:hover {
+  background-color: #e8f4f8;
+}
+
+.word.active {
+  background-color: #3498db;
+  color: white;
+  padding: 3px 4px;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  color: #7f8c8d;
+  font-size: 18px;
+}
+
+.error {
+  text-align: center;
+  padding: 50px;
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+.stats {
+  padding: 15px 30px;
+  background-color: #ecf0f1;
+  color: #7f8c8d;
+  font-size: 14px;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+/* Context Menu */
+.context-menu {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.context-menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.context-menu-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.context-menu-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+/* Repeat Range Highlights */
+.word.repeat-start {
+  border-left: 3px solid #e67e22;
+  margin-left: -3px;
+}
+
+.word.repeat-end {
+  border-right: 3px solid #e67e22;
+  margin-right: -3px;
+}
+
+.word.repeat-start.repeat-end {
+  border-left: 3px solid #e67e22;
+  border-right: 3px solid #e67e22;
+  margin-left: -3px;
+  margin-right: -3px;
+}
+
+.word.in-repeat-range {
+  background-color: #fff3e0;
+}
+
+.word.in-repeat-range:hover {
+  background-color: #ffe0b2;
+}
+
+.word.in-repeat-range.active {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Repeat Indicator */
+.repeat-indicator {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clear-repeat-btn {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-repeat-btn:hover {
+  background-color: #e67e22;
+  border-color: #e67e22;
+  color: white;
+}
+
+.clear-repeat-btn:active {
+  opacity: 0.8;
+}
+
+/* About Toggle & Section */
+.about-toggle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.about-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.about-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.about-section p {
+  margin-bottom: 8px;
+}
+
+.about-credit {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.about-usage {
+  font-size: 13px;
+}
+
+.about-disclaimer {
+  font-size: 11px;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.about-github {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.about-github a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.about-github a:hover {
+  color: white;
+  text-decoration: underline;
+}
