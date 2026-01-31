@@ -261,3 +261,113 @@ body {
   color: white;
   text-decoration: underline;
 }
+
+/* Floating PiP Player */
+@media (min-width: 1200px) {
+  .player-section {
+    position: relative;
+  }
+}
+
+.player-section.player-floating {
+  position: fixed;
+  top: auto;
+  bottom: 24px;
+  right: 24px;
+  width: 320px;
+  height: auto;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInFloat 0.3s ease;
+}
+
+.player-section.player-floating #player {
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.player-section.player-floating .repeat-indicator {
+  display: none;
+}
+
+@keyframes fadeInFloat {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.player-section.player-pinned {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container.has-floating-player {
+  margin-bottom: 350px;
+}
+
+/* Float Toggle Button */
+.float-toggle {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  background: #2c3e50;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1200px) {
+  .float-toggle {
+    display: flex;
+  }
+}
+
+.float-toggle:hover {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 2px 12px rgba(52, 152, 219, 0.4);
+}
+
+.float-toggle:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.player-section.player-floating .float-toggle {
+  display: flex;
+  top: -12px;
+  right: -12px;
+  animation: popIn 0.3s ease 0.15s both;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

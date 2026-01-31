@@ -8,11 +8,25 @@ import { useYouTubePlayer } from './composables/useYouTubePlayer'
 import { useTranscript } from './composables/useTranscript'
 import { useRepeatRange } from './composables/useRepeatRange'
 import { useRepeatLoop } from './composables/useRepeatLoop'
+import { useFloatingPlayer } from './composables/useFloatingPlayer'
 import transcriptData from '../kiCxBpSvz0.json'
 
 const VIDEO_ID = '-kiCxBpSvz0'
 
 const aboutOpen = ref(false)
+const playerSentinel = ref<HTMLElement | null>(null)
+const playerSectionRef = ref<HTMLElement | null>(null)
+const sentinelHeight = ref<string | undefined>(undefined)
+
+const { isFloating, isPinned, toggleFloat } = useFloatingPlayer(playerSentinel)
+
+watch(isFloating, (floating) => {
+  if (floating && playerSectionRef.value) {
+    sentinelHeight.value = playerSectionRef.value.offsetHeight + 'px'
+  } else {
+    sentinelHeight.value = undefined
+  }
+})
 
 const {
   currentTime,
@@ -155,7 +169,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :class="{ 'has-floating-player': isFloating }">
     <div class="header">
       <button class="about-toggle" @click="aboutOpen = !aboutOpen">
         ⓘ About
@@ -184,7 +198,10 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="player-section">
+    <div ref="playerSectionRef" class="player-section" :class="{ 'player-floating': isFloating, 'player-pinned': isPinned }">
+      <button class="float-toggle" :title="isFloating ? 'Expand player' : 'Float player'" @click="toggleFloat">
+        {{ isFloating ? '⇱' : '⇲' }}
+      </button>
       <YouTubePlayer :video-id="VIDEO_ID" @ready="handlePlayerReady" />
       <RepeatIndicator
         :start-word="repeatStartWord?.word ?? null"
@@ -194,6 +211,7 @@ onUnmounted(() => {
         @clear="handleClearRange"
       />
     </div>
+    <div ref="playerSentinel" class="player-sentinel" :style="{ height: sentinelHeight }"></div>
 
     <div class="stats">{{ stats }}</div>
 
