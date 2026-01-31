@@ -1,7 +1,7 @@
-import { createApp, vaporInteropPlugin } from 'vue'
+import { createVaporApp, vaporInteropPlugin } from 'vue'
 import App from './App.vue'
 import './style.css'
 
-createApp(App)
+createVaporApp(App)
   .use(vaporInteropPlugin)
   .mount('#app')

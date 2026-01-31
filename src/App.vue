@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup vapor lang="ts">
 import { ref, watch, computed, onMounted, onUnmounted } from 'vue'
 import YouTubePlayer from './components/YouTubePlayer.vue'
 import TranscriptView from './components/TranscriptView.vue'
