@@ -4,6 +4,7 @@ import YouTubePlayer from './components/YouTubePlayer.vue'
 import TranscriptView from './components/TranscriptView.vue'
 import ContextMenu from './components/ContextMenu.vue'
 import RepeatIndicator from './components/RepeatIndicator.vue'
+import SvgIcon from './components/SvgIcon.vue'
 import { useYouTubePlayer } from './composables/useYouTubePlayer'
 import { useTranscript } from './composables/useTranscript'
 import { useRepeatRange } from './composables/useRepeatRange'
@@ -172,7 +173,8 @@ onUnmounted(() => {
   <div class="container" :class="{ 'has-floating-player': isFloating }">
     <div class="header">
       <button class="about-toggle" @click="aboutOpen = !aboutOpen">
-        ⓘ About
+        <SvgIcon name="info" size="14px" />
+        <span>About</span>
       </button>
       <h1>Shadowing Marey</h1>
       <p>Russian shadowing practice with Dostoevsky</p>
@@ -200,7 +202,7 @@ onUnmounted(() => {
 
     <div ref="playerSectionRef" class="player-section" :class="{ 'player-floating': isFloating, 'player-pinned': isPinned }">
       <button class="float-toggle" :title="isFloating ? 'Expand player' : 'Float player'" @click="toggleFloat">
-        {{ isFloating ? '⇱' : '⇲' }}
+        <SvgIcon :name="isFloating ? 'expand' : 'float'" size="14px" />
       </button>
       <YouTubePlayer :video-id="VIDEO_ID" @ready="handlePlayerReady" />
       <RepeatIndicator

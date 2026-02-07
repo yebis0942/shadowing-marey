@@ -211,6 +211,9 @@ body {
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .about-toggle:hover {
