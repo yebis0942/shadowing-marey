@@ -63,3 +63,12 @@ function setWordRef(el: any, index: number) {
     </template>
   </div>
 </template>
+
+<style scoped>
+.transcript-section {
+  padding: 30px;
+  font-size: 18px;
+  line-height: 2;
+  border-radius: 0 0 10px 10px;
+}
+</style>

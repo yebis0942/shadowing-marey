@@ -79,3 +79,33 @@ function handleAction(action: string) {
     </div>
   </div>
 </template>
+
+<style scoped>
+.context-menu {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.context-menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+
+.context-menu-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.context-menu-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+</style>
