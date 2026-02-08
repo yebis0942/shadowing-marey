@@ -25,7 +25,7 @@ const displayText = computed(() => {
   <div v-if="visible" class="repeat-indicator">
     <SvgIcon name="repeat" size="14px" />
     <span>{{ displayText }}</span>
-    <button class="clear-repeat-btn" title="リピートを解除" @click="emit('clear')">
+    <button class="clear-repeat-btn" title="Cancel repeat" @click="emit('clear')">
       <SvgIcon name="clear" size="12px" />
     </button>
   </div>
